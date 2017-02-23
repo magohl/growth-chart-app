@@ -30,9 +30,9 @@ window.GC = window.GC || {};
         version : {
             major    : 0,
             minor    : 9,
-            build    : 9,
+            build    : 91,
             revision : 0,
-            state    : "BETA", // dev|alpha|beta|rc|r
+            state    : "RS-POC", // dev|alpha|beta|rc|r
 
             asString : function() {
                 return  this.major    + "." +
@@ -87,14 +87,16 @@ window.GC = window.GC || {};
         initialView : "graphs", // graphs | table | parent
 
         // ref: http://arshaw.com/xdate/#Formatting
-        dateFormat : "ddMMMyyyy",
-        timeFormat : "h:mm TT",
+        // dateFormat : "ddMMMyyyy",
+        // timeFormat : "h:mm TT",
+        dateFormat : "yyyy-dd-MM",
+        timeFormat : "HH:mm",
         timeInterval : {
             "Years"   : "y",
             "Year"    : "y",
             "Months"  : "m",
             "Month"   : "m",
-            "Weeks"   : "w",
+            "Weeks"   : "v",  //Ändrat fr w
             "Week"    : "w",
             "Days"    : "d",
             "Day"     : "d",

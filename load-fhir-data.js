@@ -143,10 +143,14 @@ GC.get_data = function() {
             }
 
             var units = smart.units;
-            process(vitalsByCode['3141-9'], units.kg, p.vitals.weightData);
-            process(vitalsByCode['8302-2'],  units.cm,  p.vitals.lengthData);
-            process(vitalsByCode['8287-5'],  units.cm,  p.vitals.headCData);
-            process(vitalsByCode['39156-5'], units.any, p.vitals.BMIData);
+            process(vitalsByCode['27113001'], units.kg, p.vitals.weightData);
+            process(vitalsByCode['248333004'],  units.cm,  p.vitals.lengthData);
+            process(vitalsByCode['8287-5'],  units.cm,  p.vitals.headCData); //Har inte fått snomed av HB ännu
+            process(vitalsByCode['39156-5'], units.any, p.vitals.BMIData);   //Har inte fått snomed av HB ännu
+            // process(vitalsByCode['3141-9'], units.kg, p.vitals.weightData);
+            // process(vitalsByCode['8302-2'],  units.cm,  p.vitals.lengthData);
+            // process(vitalsByCode['8287-5'],  units.cm,  p.vitals.headCData);
+            // process(vitalsByCode['39156-5'], units.any, p.vitals.BMIData);
             processBoneAge(vitalsByCode['37362-1'], p.boneAge, units);
 
             $.each(familyHistories, function(index, fh) {
@@ -190,13 +194,15 @@ GC.get_data = function() {
                     query: {
                         code: {
                             $or: [
-                                'http://loinc.org|3141-9',
-                                'http://loinc.org|8302-2',
-                                'http://loinc.org|8287-5',
-                                'http://loinc.org|39156-5',
-                                'http://loinc.org|18185-9',
-                                'http://loinc.org|37362-1',
-                                'http://loinc.org|11884-4'
+                                // 'http://loinc.org/|3141-9',
+                                // 'http://loinc.org/|8302-2',
+                                // 'http://loinc.org/|8287-5',
+                                // 'http://loinc.org/|39156-5',
+                                // 'http://loinc.org/|18185-9',
+                                // 'http://loinc.org/|37362-1',
+                                // 'http://loinc.org/|11884-4'
+								'http://snomed.info/sct/|248333004',
+								'http://snomed.info/sct/|27113001'
                             ]
                         }
                     }

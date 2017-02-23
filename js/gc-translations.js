@@ -73,9 +73,10 @@ window.GC = (function(NS) {
     }
 
     // Register languages here!
+    createLocale({ language : "Svenska", langAbbr : "se" });
     createLocale({ language : "English"  , langAbbr : "en" });
-    createLocale({ language : "Spanish"  , langAbbr : "es" });
-    createLocale({ language : "Bulgarian", langAbbr : "bg" });
+    //createLocale({ language : "Spanish"  , langAbbr : "es" });
+    //createLocale({ language : "Bulgarian", langAbbr : "bg" });
     //createLocale({ language : "Slovenian", langAbbr : "sl" });
 
     var _data = {
@@ -83,15 +84,16 @@ window.GC = (function(NS) {
         STR_0  : {
             en : "Language",
             es : "Lengua",
-            bg : "Език"
+            bg : "Език",
+			se : "Språk"
         },
 
-        STR_1  : { en : "Head Circumference", es : "Circunferencia de la cabeza",  bg: "Обиколка на главата" },
-        STR_2  : { en : "Length"            , es : "Eslora",                       bg: "Дължина" },
-        STR_3  : { en : "Stature"           , es : "Estatura",                     bg: "Ръст"},
-        STR_4  : { en : "Length/Stature"    , es : "Eslora/Estatura",              bg: "Дължина/Ръст" },
-        STR_5  : { en : "Body Mass Index"   , es : "Indice de masa corporal",      bg: "Индекс на телесната маса" },
-        STR_6  : { en : "Weight"            , es : "Peso",                         bg: "Тегло" },
+        STR_1  : { en : "Head Circumference", es : "Circunferencia de la cabeza",  bg: "Обиколка на главата" ,        se: "Huvudomfång"},
+        STR_2  : { en : "Length"            , es : "Eslora",                       bg: "Дължина",                     se: "Längd" },
+        STR_3  : { en : "Stature"           , es : "Estatura",                     bg: "Ръст",                        se: "Kroppslängd"},
+		STR_4  : { en : "Length/Stature"    , es : "Eslora/Estatura",              bg: "Дължина/Ръст" ,				  se: "Längd/Kroppslängd"},
+STR_5  : { en : "Body Mass Index"   , es : "Indice de masa corporal",      bg: "Индекс на телесната маса" ,  		  se:"Kroppsmasseindex"},
+        STR_6  : { en : "Weight"            , es : "Peso",                         bg: "Тегло",						  se:"Vikt"},
         STR_7  : { en : "Z Score"           , es : "Score Z",                      bg: "Z Резултат" },
         STR_8  : { en : "Percentiles"       , es : "Percentiles",                  bg: "Перцентили" },
         STR_9  : { en : "Percentile"        , es : "Percentil",                    bg: "Процентил"},
@@ -102,14 +104,14 @@ window.GC = (function(NS) {
         STR_14 : { en : "BMI"               , es : "BMI",                          bg: "ИТМ" },
 
         // Calendar strings
-        STR_15 : { en : "Years"             , es : "Anos",                         bg: "Години" },
-        STR_16 : { en : "Year"              , es : "Ano",                          bg: "Година" },
-        STR_17 : { en : "Months"            , es : "Meses",                        bg: "Месеци" },
-        STR_18 : { en : "Month"             , es : "Mes",                          bg: "Месец" },
-        STR_19 : { en : "Weeks"             , es : "Semanas",                      bg: "Седмици" },
+        STR_15 : { en : "Years"             , es : "Anos",                         bg: "Години", se : "År" },
+        STR_16 : { en : "Year"              , es : "Ano",                          bg: "Година", se : "År" },
+        STR_17 : { en : "Months"            , es : "Meses",                        bg: "Месеци", se : "Månader" },
+        STR_18 : { en : "Month"             , es : "Mes",                          bg: "Месец", se : "Månad" },
+        STR_19 : { en : "Weeks"             , es : "Semanas",                      bg: "Седмици", se: "Veckor" },
         STR_20 : { en : "Week"              , es : "Semana",                       bg: "Седмица" },
-        STR_21 : { en : "Days"              , es : "Dias",                         bg: "Дни" },
-        STR_22 : { en : "Day"               , es : "Dia",                          bg: "Ден" },
+        STR_21 : { en : "Days"              , es : "Dias",                         bg: "Дни", se : "Dagar" },
+        STR_22 : { en : "Day"               , es : "Dia",                          bg: "Ден", se : "Dag" },
 
         // Calendar strings (short) TODO
         STR_23 : { en : "Yrs"               , es : "Anos",                         bg: "Години" },
@@ -118,21 +120,21 @@ window.GC = (function(NS) {
         STR_26 : { en : "Mo"                , es : "Mes",                          bg: "Месец" },
         STR_27 : { en : "Wks"               , es : "Sem",                          bg: "Седмици" },
         STR_28 : { en : "Wk"                , es : "Sem",                          bg: "Седмица" },
-        STR_29 : { en : "Days"              , es : "Dias",                         bg: "Дни" },
-        STR_30 : { en : "Day"               , es : "Dia",                          bg: "Ден" },
+        STR_29 : { en : "Days"              , es : "Dias",                         bg: "Дни", se : "Dagar" },
+        STR_30 : { en : "Day"               , es : "Dia",                          bg: "Ден", se : "Dag" },
 
         STR_31 : { en : "Medical Service"   , es : "Servicio medico",                            bg: "Медицински услуги"},
         STR_32 : { en : "Mid-Parental Height", es : "Mid. Altura de los padres",                 bg: "Средна височина на родителите" },
         STR_33 : { en : "Latest Percentile Height", es : "Altura nominal estimada",              bg: "Последна процентилна височина" },
         STR_34 : { en : "Bone Age Adjusted Height", es : "Bone estimada Edad Altura",            bg: "Височина коригирана на база костна възраст" },
         STR_35 : { en : "Entry Date"              , es : "Fecha",                                bg: "Дата на постъпване" },
-        STR_36 : { en : "Age"                     , es : "Edad",                                 bg: "Възраст" },
+        STR_36 : { en : "Age"                     , es : "Edad",                                 bg: "Възраст", se:"Ålder" },
 
         STR_37 : { en : "Mid-Parental"     , es : "Mid. Altura de los padres",                   bg: "Среден резултат на родителите" },
         STR_38 : { en : "Latest Percentile", es : "Altura nominal estimada",                     bg: "Последен процентил"  },
         STR_39 : { en : "Bone Age Adjusted", es : "Bone estimada Edad Altura",                   bg: "Коригирано на база костна възраст" },
 
-        STR_40 : { en : "time", es : "tiempo",                                                   bg: "време"  },
+        STR_40 : { en : "time", es : "tiempo",                                                   bg: "време", se: "tid"  },
 
         // =====================================================================
         // Parental view
@@ -147,9 +149,9 @@ window.GC = (function(NS) {
         STR_136: { en : "Female", es: "Femenino",                                                       bg: "Женски"},
         STR_137: { en : "'s Predicted Height", es : "Prediccion de altura de ",                         bg: "Предполагаема височина"},
         STR_138: { en : "Based on Median Parent Height", es : "Basada en la Altura Mediana de los Padres", bg: "Базирано на средната височина на родителите"},
-        STR_139: { en : "Sex", es: "Sexo",                                                                 bg: "Пол"},
-        STR_140: { en : "Age", es: "Edad",                                                                 bg: "Възраст"},
-        STR_141: { en : "DOB", es: "Fec. Nac.",                                                            bg: "Дата на раждане"},
+        STR_139: { en : "Sex", es: "Sexo",                                                                 bg: "Пол", se:"kön"},
+        STR_140: { en : "Age", es: "Edad",                                                                 bg: "Възраст", se:"Ålder"},
+        STR_141: { en : "DOB", es: "Fec. Nac.",                                                            bg: "Дата на раждане", se:"Född"},
         STR_142: { en : "Gestation", es: "Gestacion",                                                      bg: "Бременност"},
         STR_143: { en : "Allergies", es: "Alergias",                                                       bg: "Алергии"},
         STR_144: { en : "premature", es: "prematuro",                                                      bg: "Преждевременен"},
@@ -163,8 +165,8 @@ window.GC = (function(NS) {
         STR_152: { en : "Height", es: "Altura",                                                                                              bg: "Височина"},
         STR_153: { en : "Child's Height Progression", es : "Nino Progresion Altura",                                                         bg: "Ръстежен прогрес на детето" },
         STR_154: { en : "Edit Parental Heights", es : "Editar alturas de los padres",                                                        bg: "Поправете височините на родителите" },
-        STR_155: { en : "sex", es: "sexo",                    bg: "Пол"},
-        STR_156: { en : "age", es: "edad",                    bg: "Възраст" },
+        STR_155: { en : "sex", es: "sexo",                    bg: "Пол", se:"kön"},
+        STR_156: { en : "age", es: "edad",                    bg: "Възраст", se: "ålder" },
         STR_157: { en : "dob", es: "dob",                     bg: "Дата на раждане"  },
         STR_158: { en : "No data", es: "No hay datos",        bg: "Няма въведена дата"  },
 
@@ -190,9 +192,9 @@ window.GC = (function(NS) {
 
         STR_177: { en : "Latest measurements", es : "Las últimas mediciones",     bg: "Последни измервания" },
 
-        STR_178: { en : "Add Data", es : "Agregar datos",     bg: "Добави" },
+        STR_178: { en : "Add Data", es : "Agregar datos",     bg: "Добави", se : "Lägg till" },
         STR_179: { en : "Print View", es : "Imprimir View",     bg: "Принтирай" },
-        STR_180 : { en : "Please Wait...", es : "Espere por favor...", bg : "Моля изчакайте..." },
+        STR_180 : { en : "Please Wait...", es : "Espere por favor...", bg : "Моля изчакайте...", se: "Var vänlig vänta..." },
 
         STR_181 : { en : "his", es : "su" , bg : "неговият" },
         STR_182 : { en : "her", es : "sus", bg : "нейният" },
@@ -213,7 +215,8 @@ window.GC = (function(NS) {
         STR_3001 : { // Date of Birth (input label at the header)
             en : "DOB",
             es : "DOB",
-            bg : "Реална"
+            bg : "Реална",
+			se : "Födelsedatum"
         },
         STR_3002 : { // placeholder attribute of the DOB input at the header
             en : "Child's DOB",
@@ -424,77 +427,93 @@ window.GC = (function(NS) {
         STR_3041 : {
             en : "Colors",
             es : "Colores",
-            bg : "Цветове"
+            bg : "Цветове",
+			se : "Färger"
         },
         STR_3042 : {
             en : "PARENT",
             es : "PADRE",
-            bg : "РОДИТЕЛ"
+            bg : "РОДИТЕЛ",
+			se : "FÖRÄLDER"
         },
         STR_3043 : {
             en : "TABLE",
             es : "ТABLA",
-            bg : "ТАБЛИЦА"
+            bg : "ТАБЛИЦА",
+			se : "TABELL"
         },
         STR_3044 : {
             en : "GRAPHS",
             es : "GRÁFICOS",
-            bg : "ГРАФИКИ"
+            bg : "ГРАФИКИ",
+			se : "DIAGRAM"
         },
         STR_3045 : {
             en : "App Version: ",
             es : "App Versión: ",
-            bg : "App Версия: "
+            bg : "App Версия: ",
+			se : "App Version"
         },
         STR_3046 : {
             en : "0 – 13 Weeks ",
             es : "0 - 13 Semanas ",
-            bg : "0 - 13 Седмици "
+            bg : "0 - 13 Седмици ",
+			se : "0 - 13 Veckor "
         },
         STR_3047 : {
             en : "0 – 6 Months ",
             es : "0 – 6 Meses ",
-            bg : "0 – 6 Месеца "
+            bg : "0 – 6 Месеца ",
+			se : "0 - 6 Månader "
+
         },
         STR_3048 : {
             en : "0 – 2 Years ",
             es : "0 – 2 Аnos ",
-            bg : "0 – 2 Години "
+            bg : "0 – 2 Години ",
+			se : "0 - 2 År "
         },
         STR_3049 : {
             en : "0 – 20 Years ",
             es : "0 – 20 Аnos ",
-            bg : "0 – 20 Години "
+            bg : "0 – 20 Години ",
+			se : "0 - 20 År "
         },
         STR_3050 : {
             en : "Fit to Age",
             es : "Ajustar a la Edad",
-            bg : "Автоматичен обхват"
+            bg : "Автоматичен обхват",
+			se : "Anpassa till ålder"
         },
         STR_3051 : {
             en : "Zoom Out",
             es : "Alejar",
-            bg : "Намаляване"
+            bg : "Намаляване",
+			se : "Zooma ut"
         },
         STR_3052 : {
             en : "last recording",
             es : "última grabación",
-            bg : "последен запис"
+            bg : "последен запис",
+			se : "sista registrering"
         },
         STR_3053 : {
             en : "sex",
             es : "sexo",
-            bg : "пол"
+            bg : "пол",
+			se : "kön"
         },
         STR_3054 : {// fecha de nacimiento
             en : "dob",
             es : "fdn",
-            bg : "днр"
+            bg : "днр",
+			se : "Född"			
         },
         STR_3055 : {
             en : "age",
             es : "edad",
-            bg : "възраст"
+            bg : "възраст",
+			se : "ålder"
         },
         STR_3056 : {
             en : "corrected age",
@@ -504,18 +523,21 @@ window.GC = (function(NS) {
         STR_3057 : {
             en : "Auto",
             es : "Automático",
-            bg : "Автоматично"
+            bg : "Автоматично",
+			se: "Automatisk"
         },
         STR_3058 : {
             en : "Auto",
             es : "Automático",
-            bg : "Автоматично"
+            bg : "Автоматично",
+			se: "Automatisk"
         },
 
         STR_3059 : {
             en : "1:1 (square)",
             es : "1:1 (cuadrado)",
-            bg : "1:1 (квадрат)"
+            bg : "1:1 (квадрат)",
+			se : "1:1 (kvadrat)"
         },
         // Header Advanced settings from file settings-editor.html
         STR_3060  : { en : "Color Schema", es : "Esquema de color",  bg: "Цветна схема" },
@@ -550,43 +572,44 @@ window.GC = (function(NS) {
         STR_3089  : { en : "X-Axis Time Units", es : "X-Eje Unidades de tiempo", bg : "X-Ос Времеви единици" },
         STR_3090  : { en : "Time units to be shown on X-axis: select units used for the", es : "Las unidades de tiempo que se muestra en el eje X: unidades selectas utilizados para la", bg : "За да бъдат показани времевите единици на оста X: Изберете единици, използвани за" },
         STR_3091  : { en : "amount of time shown on X-axis (when zooming, for example)", es : "cantidad de tiempo que aparece en el eje X (cuando el zoom, por ejemplo)", bg : "количеството време показано на оста X (когато увеличавате екрана например)" },
-        STR_3092  : { en : "Days", es : "Días", bg : "Дни" },
-        STR_3093  : { en : "from", es : "de", bg : "от" },
+        STR_3092  : { en : "Days", es : "Días", bg : "Дни", se : "Dagar" },
+        STR_3093  : { en : "from", es : "de", bg : "от", se : "from" },
         STR_3094  : { en : "to", es : "hasta", bg : "до" },
-        STR_3095  : { en : "Weeks", es : "Semanas", bg : "Седмици" },
+        STR_3095  : { en : "Weeks", es : "Semanas", bg : "Седмици", se : "Veckor"},
         STR_3096  : { en : "from", es : "de", bg : "от" },
         STR_3097  : { en : "to", es : "hasta", bg : "до" },
-        STR_3098  : { en : "Months", es : "Meses", bg : "Месеци" },
+        STR_3098  : { en : "Months", es : "Meses", bg : "Месеци", se : "Månader" },
         STR_3099  : { en : "from", es : "de", bg : "от" },
         STR_3100  : { en : "to", es : "hasta", bg : "до" },
-        STR_3101  : { en : "Years", es : "Аños", bg : "Години" },
+        STR_3101  : { en : "Years", es : "Аños", bg : "Години", se : "År" },
         STR_3102  : { en : "from", es : "de", bg : "от" },
         STR_3103  : { en : "to", es : "hasta", bg : "до" },
         STR_3104  : { en : "Preview:", es : "Vista previa:", bg : "Изглед:" },
         STR_3105  : { en : "Days", es : "Días", bg : "Дни" },
-        STR_3106  : { en : "Weeks", es : "Semanas", bg : "Седмици" },
-        STR_3107  : { en : "Months", es : "Meses", bg : "Месеци" },
-        STR_3108  : { en : "Years", es : "Аños", bg : "Години" },
+        STR_3106  : { en : "Weeks", es : "Semanas", bg : "Седмици", se : "Veckor" },
+        STR_3107  : { en : "Months", es : "Meses", bg : "Месеци", se : "Månader" },
+        STR_3108  : { en : "Years", es : "Аños", bg : "Години", se : "År" },
         STR_3109  : { en : "Default Chart Selection", es : "Tabla de selección por defecto", bg : "Избор на таблица по подразбиране" },
         STR_3110  : { en : "Premature", es : "Prematuro", bg : "Предварителен" },
         STR_3111  : { en : "0-2 Years Old", es : "0-2 Аños viejos", bg : "0-2 Годишна възраст" },
         STR_3112  : { en : "2-20 Years Old", es : "2-20 Аños viejos", bg : "2-20 Годишна възраст" },
-        STR_3113  : { en : "Date", es : "Fecha", bg : "Дата" },
-        STR_3114  : { en : "Time", es : "Tiempo", bg : "Време" },
-        STR_3115  : { en : "Date Format", es : "Formato de la fecha", bg : "Формат за датата" },
-        STR_3116  : { en : "ddMMMyyyy", es : "ddMMMaaaa", bg : "ддМММгггг" },
+        STR_3113  : { en : "Date", es : "Fecha", bg : "Дата", se:"Datum" },
+        STR_3114  : { en : "Time", es : "Tiempo", bg : "Време", se : "Tid" },
+        STR_3115  : { en : "Date Format", es : "Formato de la fecha", bg : "Формат за датата", se : "Datumformat" },
+        STR_3116  : { en : "ddMMMyyyy", es : "ddMMMaaaa", bg : "ддМММгггг", se : "yyyy-MM-dd" },
         STR_3117  : { en : "dd MMM yyyy", es : "dd MMM aaaa", bg : "дд MMM гггг" },
         STR_3118  : { en : "MM/dd/yy", es : "ММ/dd/aa", bg : "MM/дд/гг" },
         STR_3119  : { en : "dd/MM/yy", es : "dd/MM/aa", bg : "дд/ММ/гг" },
         STR_3120  : { en : "dd-MM-yyyy", es : "dd-MM-aaaa", bg : "дд-ММ-гггг" },
+        STR_3120B  : { en : "yyyy-MM-dd", se : "yyyy-MM-dd"},		
         STR_3121  : { en : "Preview:", es : "Vista previa:", bg : "Изглед:" },
-        STR_3122  : { en : "Time Format:", es : "Formato de hora:", bg : "Времеви формат:" },
+        STR_3122  : { en : "Time Format:", es : "Formato de hora:", bg : "Времеви формат:", se : "Tidsformat" },
         STR_3123  : { en : "Preview:", es : "Vista previa:", bg : "Изглед:" },
         STR_3124  : { en : "Intervals and Durations:", es : "Intervalos y duraciones:", bg : "Интервали и продължителност:" },
         STR_3125  : { en : "Precision", es : "Precisión", bg : "Точност" },
-        STR_3126  : { en : "Years", es : "Аños", bg : "Години" },
-        STR_3127  : { en : "Months", es : "Meses", bg : "Месеци" },
-        STR_3128  : { en : "Weeks", es : "Semanas", bg : "Седмици" },
+        STR_3126  : { en : "Years", es : "Аños", bg : "Години", se : "År" },
+        STR_3127  : { en : "Months", es : "Meses", bg : "Месеци", se : "Månader" },
+        STR_3128  : { en : "Weeks", es : "Semanas", bg : "Седмици", se : "Veckor" },
         STR_3129  : { en : "Days", es : "Días", bg : "Дни" },
         STR_3130  : { en : "Hours", es : "Horas", bg : "Часове" },
         STR_3131  : { en : "Minutes", es : "Minutos", bg : "Минути" },
@@ -596,7 +619,7 @@ window.GC = (function(NS) {
         STR_3135  : { en : "Limit", es : "Límite", bg : "Лимит" },
         STR_3136  : { en : "Fill with zero", es : "Rellenar con cero", bg : "Попълни с нула " },
         STR_3137  : { en : "Preview:", es : "Vista previa:", bg : "Изглед:" },
-        STR_3138  : { en : "Percentiles", es : "Percentiles", bg : "Перцентили" },
+        STR_3138  : { en : "Percentiles", es : "Percentiles", bg : "Перцентили", se : "Percentil" },
         STR_3139  : { en : "Precision", es : "Precisión", bg : "Точност" },
         STR_3140  : { en : "Major Percentile Lines", es : "Las principales líneas de percentiles", bg : "Основни перцентилни линии" },
         STR_3141  : { en : "03rd, 15th, 50th, 85th, 97th", es : "03rd, 15th, 50th, 85th, 97th", bg : "03-та, 15-та, 50-та, 85-та, 97-ма" },
@@ -605,10 +628,10 @@ window.GC = (function(NS) {
         STR_3144  : { en : "Regular", es : "Regular", bg : "Редовен" },
         STR_3145  : { en : "NICU", es : "NICU", bg : "НИОН" },
         STR_3146  : { en : "Length/Stature", es : "Longitud / Еstatura", bg : "Дължина / Ръст" },
-        STR_3147  : { en : "Weight", es : "Peso", bg : "Тегло" },
-        STR_3148  : { en : "Head Circumference", es : "Circunferencia de la cabeza", bg : "Обиколка на главата" },
+        STR_3147  : { en : "Weight", es : "Peso", bg : "Тегло", se : "Vikt" },
+        STR_3148  : { en : "Head Circumference", es : "Circunferencia de la cabeza", bg : "Обиколка на главата", se : "Huvudomfång" },
         STR_3149  : { en : "Body Mass Index", es : "Indice de Masa Corporal", bg : "Индекс на телесната маса" },
-        STR_3150  : { en : "Percentiles", es : "Percentiles", bg : "Перцентили" },
+        STR_3150  : { en : "Percentiles", es : "Percentiles", bg : "Перцентили", se : "Percentil" },
         STR_3151  : { en : "Z Score", es : "Z Score", bg : "Z Резултат" },
         STR_3152  : { en : "Velocity Denominator", es : "Velocity Denominador", bg : "Деноминатор за изменение" },
         STR_3153  : { en : "Year", es : "Аño", bg : "Година" },
@@ -629,9 +652,9 @@ window.GC = (function(NS) {
         STR_5000  : { en : "Date of measurement/note", es : "Fecha de la medida / nota ",  bg: "Дата на измерване/бележка " },
         STR_5001  : { en : "Patient's age on above date ", es : "Edad de la paciente ",  bg: "Възрaст на пациента " },
         STR_5002  : { en : "Entered by user/department ", es : "Entró por el usuario/departamento ",  bg: "Въведено от потребителя/отдела " },
-        STR_5003  : { en : "Length ", es : "Longitud ",  bg: "Дължина " },
+        STR_5003  : { en : "Length ", es : "Longitud ",  bg: "Дължина ", se : "Längd" },
         STR_5004  : { en : "N/A", es : "N/A",  bg: "N/A" },
-        STR_5005  : { en : "Weight", es : "Peso",  bg: "Тегло" },
+        STR_5005  : { en : "Weight", es : "Peso",  bg: "Тегло", se : "Vikt" },
         STR_5006  : { en : "N/A", es : "N/A",  bg: "N/A" },
         STR_5007  : { en : "Head C", es : "Head C",  bg: "Глава О" },
         STR_5008  : { en : "N/A", es : "N/A",  bg: "N/A" },
@@ -654,9 +677,9 @@ window.GC = (function(NS) {
         STR_6030  : { en : "The GC application was launched outside a SMART container.We loaded some demo data for you.", es : "La aplicación GC fue lanzado fuera de una container.We INTELIGENTE cargado algunos datos de ejemplo para usted.",  bg: "GC приложенито е беше пуснато извън SMART. Ние заредихме някои примерни данни за вас." },
         STR_6031  : { en : "Please select Demo Patient to use:", es : "Seleccione Paciente Demostración de empleo:",  bg: "Моля изберете примерен пациент:" },
 
-        STR_6032  : { en : "Apply", es : "Aplicar", bg : "Приложи" },
-        STR_6033  : { en : "Save", es : "Guardar", bg : "Запази" },
-        STR_6034  : { en : "Reset to Defaults", es : "Predeterminados", bg : "Настроики по подразбиране!" },
+        STR_6032  : { en : "Apply", es : "Aplicar", bg : "Приложи", se : "Använd" },
+        STR_6033  : { en : "Save", es : "Guardar", bg : "Запази", se : "Spara" },
+        STR_6034  : { en : "Reset to Defaults", es : "Predeterminados", bg : "Настроики по подразбиране!", se : "Återgå till standard" },
         STR_6035  : {
             en : "Not enough statistics data to calculate the percentile",
             es : "No hay suficientes datos estadísticos para calcular el percentil",
@@ -675,7 +698,8 @@ window.GC = (function(NS) {
         STR_6038 : {
             en : "Add Data",
             es : "Agregar datos",
-            bg : "Добавяне на данни"
+            bg : "Добавяне на данни",
+			se : "Lägg till"
         },
         STR_6039 : {
             en : "Submit",
@@ -685,32 +709,37 @@ window.GC = (function(NS) {
         STR_6040 : {
             en : "Today",
             es : " Hoy ",
-            bg : "Днес "
+            bg : "Днес ",
+			se : "Idag"
         },
         STR_6041  : { en : "Close", es : "Cerrar", bg : "Затвори" },
         STR_6042  : { en : "Continue", es : "Continuar", bg : "Продължи" },
-        STR_6043  : { en : "ON", es : "EN", bg : "Да" },
-        STR_6044  : { en : "OFF", es : "DE", bg : "Не" },
+        STR_6043  : { en : "ON", es : "EN", bg : "Да", se: "PÅ" },
+        STR_6044  : { en : "OFF", es : "DE", bg : "Не", se: "AV" },
         STR_6045  : {
             en : "No data available!",
             es : "No hay datos disponibles!",
-            bg : "Няма налични данни!"
+            bg : "Няма налични данни!",
+			se : "Ingen tillgänglig data"
         },
 
         STR_6046  : {
             en : "No curves data",
             es : "Pero no los datos de los gráficos",
-            bg : "Няма достатъчно данни за графика"
+            bg : "Няма достатъчно данни за графика",
+			se : "Ingen data"
         },
         STR_6047  : {
             en : "Last recording",
             es : "Última grabación",
-            bg : "Последен запис"
+            bg : "Последен запис",
+			se : "Sista värde"
         },
         STR_6048  : {
             en : "Selected recording",
             es : "Grabación seleccionado",
-            bg : "Избран запис"
+            bg : "Избран запис",
+			se : "Valt värde"
         },
         STR_6049  : {
             en : "PICK A CHART",
@@ -726,12 +755,14 @@ window.GC = (function(NS) {
         STR_Loading : {
             en : "Loading",
             es : "Carga",
-            bg : "Зареждане"
+            bg : "Зареждане",
+			se : "Laddar"
         },
         STR_LoadingData : {
             en : "Loading data",
             es : "Cargando datos",
-            bg : "Зареждане на данни"
+            bg : "Зареждане на данни",
+			se : "Laddar data"
         },
         STR_LoadingCurveData : {
             en : "Loading curve data",
@@ -741,12 +772,14 @@ window.GC = (function(NS) {
         STR_Error_LoadingApplication : {
             en : "There was an error loading the application",
             es : "Se ha producido un error al cargar la aplicación",
-            bg : "Възникна грешка при зареждане на приложението"
+            bg : "Възникна грешка при зареждане на приложението",
+			se : "Ett fel uppstod under start av applikationen"
         },
         STR_Error_NoPatient : {
             en : "Patient not found",
             es : "Paciente no encontrado",
-            bg : "Липсващ пациент"
+            bg : "Липсващ пациент",
+			se : "Hittar inte patienten"
         },
         STR_ApplyLocalizations : {
             en : "Apply localizations",
@@ -756,22 +789,26 @@ window.GC = (function(NS) {
         STR_PreloadImages : {
             en : "Pre-load images",
             es : "Carga previa de imágenes",
-            bg : "Презареждане на картинките"
+            bg : "Презареждане на картинките",
+			se : "Förladdar bilder"
         },
         STR_SetInitialState : {
             en : "Set initial state",
             es : "Establecer estado inicial",
             bg : "Настройка на първоначалното състояние"
+			se : "Utför inställningar"
         },
         STR_InitializeUIControls : {
             en : "Initialize UI Controls",
             es : "Inicializar controles de interfaz de usuario",
-            bg : "Инициализация на юзър интерфейса"
+            bg : "Инициализация на юзър интерфейса",
+			se : "Initierar UI"
         },
         STR_SetUIValues : {
             en : "Set UI Values",
             es : "Establecer los valores de la interfaz de usuario",
-            bg : "Начални стойности на UI контролите"
+            bg : "Начални стойности на UI контролите",
+			se : "Ställ in UI värden"
         },
         STR_NotifyAppReady : {
             en : "Notify AppReady",
@@ -797,7 +834,8 @@ window.GC = (function(NS) {
         STR_AboutThisApp : {
             en : "About This App",
             es : "Acerca de esta aplicación",
-            bg : "Относно приложението"
+            bg : "Относно приложението",
+			se : "Om denna applikation"
         },
         STR_AddEditParentalHeights : {
             en : "Add/Edit Parental Heights",
@@ -807,17 +845,20 @@ window.GC = (function(NS) {
         STR_SMART_GENDER_male : {
             en : "male",
             bg : "мъж",
-            es : "macho"
+            es : "macho",
+			se : "man"
         },
         STR_SMART_GENDER_female : {
             en : "female",
             bg : "жена",
-            es : "femenino"
+            es : "femenino",
+			se : "kvinna"
         },
         STR_Error_UnknownGender : {
             en : "Growth charts can only be displayed for males and females.",
             es : "Los gráficos de crecimiento solo se pueden mostrar para niños y niñas.",
-            bg : ""
+            bg : "",
+			se : "Tillväxtkurva kan inte visas om kön är okänt"
         },
         "STR_colorPrreset_Default" : {
             en : "Default",
